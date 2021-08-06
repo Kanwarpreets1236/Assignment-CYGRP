@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+
+   <html>
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,14 +10,14 @@
 
     .container {
       border-radius: 10px;
-      background-color: #C0C0C0;
+      background-color: #1a6e7c;
       padding: 30px;
     }
 
     body {
       font-family: arial, sans-serif;
 
-      background-image: url("background.png");
+      background-image: url("5.png");
       background-repeat: no-repeat;
       background-size: cover;
 
@@ -26,7 +26,7 @@
     input[type=text],
     select,
     textarea {
-      background-color: #ffe463;
+      background-color: white;
       width: 100%;
       padding: 12px;
       border: 1px solid #ccc;
@@ -38,7 +38,7 @@
     }
 
     input[type=submit] {
-      background-color: #ffe463;
+      background-color: white;
       color: black;
       padding: 12px 20px;
       border: none;
@@ -47,16 +47,16 @@
     }
 
     .container {
-      background-color: black;
+      background-color: #1a6e7;
     }
 
     label,
     p {
-      color: #ffe463;
+      color: white;
     }
 
     .radio {
-      color: #ffe463;
+      color: white;
     }
   </style>
 </head>
@@ -107,7 +107,17 @@
   </div>
   <script>
     function func() {
-      alert("Your response has been recorded. We will respond you shortly.");
+
+      var fname = document.getElementById("firstname").value;
+      var lname = document.getElementById("lastname").value;
+      var comment = document.getElementById("subject").value;
+
+      if (fname != "" && fname != null && fname != undefined && lname != "" && lname != null && lname != undefined && comment != "" && comment != null && comment != undefined) {
+        alert("Your response has been recorded. We will respond you shortly.");
+      }
+      else {
+        alert("Please fill all the required fields");
+      }
     }
   </script>
 </body>
