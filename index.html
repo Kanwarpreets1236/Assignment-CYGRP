@@ -10,6 +10,11 @@
 
 <head>
   <title>My portfolio</title>
+  <!-- ChatBot -->
+<link rel="stylesheet" type="text/css" href="./jquerystyle.css">
+<script type="text/javascript" src="./jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="./jquery.js"></script>
+<script type="text/javascript" src="./query.js"></script>
   <!-- Internal CSS -->
   <style>
     * {
@@ -370,6 +375,43 @@
         left: 0%;
       }
     }
+    /*ChatBot*/
+.chat_icon{
+	position: fixed;
+	bottom: 0;
+	right: 30px;
+	z-index: 1000;
+	padding: 0;
+	font-size: 80px;
+	color: #fff;
+	cursor: pointer;
+}
+.chat_box{
+	width: 400px;
+	height: 80vh;
+	position: fixed;
+	bottom: 100px;
+	right: 30px;
+	background:#dedede;
+	z-index: 1000;
+	transition: all 0.3s ease-out;
+	transform: scaleY(0);
+}
+.chat_box.active{
+	transform: scaleY(1);
+}
+#messages{
+	padding: 20px;
+}
+.my-conv-form-wrapper textarea{
+	height: 30px;
+	overflow: hidden;
+	resize: none;
+}
+.hidden{
+	display: none !important;
+}
+
   </style>
 </head>
 
@@ -524,6 +566,58 @@
       <p class="copyright">Kanwarpreet Singh &copy; </p>
     </footer>
   </div>
+  <!-- ChatBot -->
+<div class="chat_icon">
+	<i class="fa fa-comments" aria-hidden="true"></i>
+</div>
+
+<div class="chat_box">
+	<div class="my-conv-form-wrapper">
+		<form action="" method="GET" class="hidden">
+
+      <select data-conv-question="Interests" name="category">
+        <option value="Salesforce">Salesforce ?</option>
+        <option value="WebDevelopment">Web Development?</option>
+      </select>
+
+      <div data-conv-fork="category">
+        <div data-conv-case="WebDevelopment">
+          <input type="text" name="domainName" data-conv-question="Enter your Domain Name">    
+        </div>
+        <div data-conv-case="Salesforce" data-conv-fork="first-question2">
+          <input type="text" name="companyName" data-conv-question="Enter you Company Name"> 
+        </div>
+      </div>
+
+      <input type="text" name="name" data-conv-question="Enter your Name">
+
+      <input type="text" data-conv-question="Hi {name}, <br> It's a pleasure to meet you." data-no-answer="true">
+
+      <input data-conv-question="Enter your e-mail" data-pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" type="email" name="email" required placeholder="What's your e-mail?">
+
+      <select data-conv-question="Please Confirm">
+        <option value="Yes">Confirm</option>
+      </select>
+
+  	</form>
+	</div>
+</div>
+<!-- ChatBot end -->
+  <script type="text/javascript">
+    portfolioList = document.querySelectorAll('.portfolio-box');
+    portfolioList.forEach(function(portfolioPic) {
+      portfolioPic.addEventListener('click',function(){
+        bg = this.style.backgroundImage;
+        document.getElementById('port_pop_pic_bg').classList.add("active")
+        document.getElementById('port_pop_pic').style.backgroundImage = bg
+        document.getElementById('port_pop_pic').classList.add("active")
+      });	
+    })
+    document.getElementById('port_pop_pic_bg').addEventListener('click',function(){
+        document.getElementById('port_pop_pic_bg').classList.remove("active")
+        document.getElementById('port_pop_pic').classList.remove("active")
+    })
+  </script>
 </body>
 
 </html>
